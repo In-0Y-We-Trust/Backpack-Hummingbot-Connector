@@ -1,0 +1,38 @@
+name: Backpack Docker Build Workflow
+
+on:
+  push:
+    branches:
+      - prerelease
+  workflow_dispatch:  # Для ручного запуска workflow
+
+jobs:
+  build_and_push:
+    name: Build and push Docker images
+    runs-on: ubuntu-latest
+    environment: basic
+    timeout-minutes: 180  # 3 часа максимум для сборки
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.1.1
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3.1.0
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v3 
+        with:
+          username: ${{ secrets.SADGB_DOCKERHUB_USERNAME }}
+          password: ${{ secrets.SADGB_DOCKERHUB_TOKEN }}
+
+      - name: Build and push Latest Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: sadgb/hbbackpack:latest

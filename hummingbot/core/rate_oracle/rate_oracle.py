@@ -39,6 +39,7 @@ RATE_ORACLE_SOURCES = {
     "hyperliquid": HyperliquidRateSource,
     "derive": DeriveRateSource,
     "tegro": TegroRateSource,
+    #"backpack": CubeRateSource,
 }
 
 

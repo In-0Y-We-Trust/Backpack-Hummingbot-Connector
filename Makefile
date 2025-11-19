@@ -4,6 +4,7 @@
 .PHONY: report_coverage
 .PHONY: development-diff-cover
 .PHONY: docker
+.PHONY: docker_x64
 .PHONY: install
 .PHONY: uninstall
 .PHONY: clean
@@ -31,7 +32,10 @@ development-diff-cover:
 	diff-cover --compare-branch=origin/development coverage.xml
 
 docker:
-	git clean -xdf && make clean && docker build -t hummingbot/hummingbot${TAG} -f Dockerfile .
+	git clean -xdf && make clean && docker build -t sadgb/hbbackpack:latest -f Dockerfile .
+
+docker_x64:
+	git clean -xdf && make clean && docker build --platform linux/amd64 -t sadgb/hbbackpack:x64 -f Dockerfile .
 
 clean:
 	./clean

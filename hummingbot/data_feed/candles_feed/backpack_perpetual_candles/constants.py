@@ -2,14 +2,13 @@ from bidict import bidict
 
 from hummingbot.core.api_throttler.data_types import LinkedLimitWeightPair, RateLimit
 
-REST_URL = "https://fapi.binance.com"
-HEALTH_CHECK_ENDPOINT = "/fapi/v1/ping"
-CANDLES_ENDPOINT = "/fapi/v1/klines"
+REST_URL = "https://api.backpack.exchange"
+HEALTH_CHECK_ENDPOINT = "/api/v1/ping"
+CANDLES_ENDPOINT = "/api/v1/klines"
 
-WSS_URL = "wss://fstream.binance.com/ws"
+WSS_URL = "wss://ws.backpack.exchange"
 
 INTERVALS = bidict({
-    "1s": 1,
     "1m": 60,
     "3m": 180,
     "5m": 300,
@@ -24,9 +23,9 @@ INTERVALS = bidict({
     "1d": 86400,
     "3d": 259200,
     "1w": 604800,
-    "1M": 2592000
+    "1month": 2592000
 })
-MAX_RESULTS_PER_CANDLESTICK_REST_REQUEST = 2000
+MAX_RESULTS_PER_CANDLESTICK_REST_REQUEST = 1500
 REQUEST_WEIGHT = "REQUEST_WEIGHT"
 
 RATE_LIMITS = [
