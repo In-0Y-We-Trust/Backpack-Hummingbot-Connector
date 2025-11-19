@@ -1,4 +1,26 @@
-![Hummingbot](https://i.ibb.co/X5zNkKw/blacklogo-with-text.png)
+# Backpack Perpetuals Connector for Hummingbot
+
+This repository is based on **Hummingbot v2.4.0** (released in March 2025).  
+Official release: https://github.com/hummingbot/hummingbot/releases/tag/v2.4.0
+
+## Compatibility
+This connector has not been tested with newer Hummingbot versions.  
+In principle, merging the latest commits from `hummingbot/master` into this branch should work, but this has not been verified.
+
+## Features
+- Supports **Backpack Perpetuals** only.  
+  Contributions and pull requests are welcome.
+
+## Known Issues
+- There is a known issue with profit calculations:  
+  the bot may occasionally display profits higher than the actual values.  
+  This does **not** affect trading logic or execution.
+
+## Docker Images
+The latest multi-architecture Docker image (ARM + x86_64) can be found here:  
+https://hub.docker.com/r/sadgb/hbbackpack
+
+**Warning:** the published image contains built-in anonymous telemetry.
 
 ----
 [![License](https://img.shields.io/badge/License-Apache%202.0-informational.svg)](https://github.com/hummingbot/hummingbot/blob/master/LICENSE)
